@@ -2,6 +2,8 @@ import { Stack } from 'expo-router';
 import 'react-native-reanimated';
 import CustomHeader from '@/components/CustomHeader';
 import { DefaultTheme, PaperProvider } from 'react-native-paper';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 
 export const unstable_settings = {
@@ -22,15 +24,19 @@ const theme = {
 export default function RootLayoutNav() {
 
   return (
-    <PaperProvider theme={theme}>
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            header: () => <CustomHeader />
-          }}
-        />
-      </Stack>
-    </PaperProvider>
+    <GestureHandlerRootView>
+      <PaperProvider theme={theme}>
+        <BottomSheetModalProvider>
+          <Stack>
+            <Stack.Screen
+              name="index"
+              options={{
+                header: () => <CustomHeader />
+              }}
+            />
+          </Stack>
+        </BottomSheetModalProvider>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }

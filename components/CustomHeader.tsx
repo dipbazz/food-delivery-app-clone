@@ -1,21 +1,28 @@
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useCallback, useRef } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Appbar, Avatar, Text, TextInput, useTheme } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
+import BottomSheet from './BottomSheet';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
 
 const CustomHeader = () => {
   const theme = useTheme();
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
   const _handleProfile = () => console.log("profile clicked.")
+  const _openModal = useCallback(() => {
+    bottomSheetRef?.current?.present();
+  }, []);
 
   return (
     <SafeAreaView>
+      <BottomSheet ref={bottomSheetRef} />
       <Appbar.Header style={{backgroundColor: theme.colors.background }}>
           <Appbar.Content
             title={
               <View>
-                <TouchableOpacity style={styles.heading}>
+                <TouchableOpacity style={styles.heading} onPress={_openModal}>
                   <Avatar.Text size={35} label="FD" style={{ marginRight: 5 }} />
                   <View>
                     <Text style={{ color: theme.colors.secondary }}>Delivery name</Text>
@@ -45,6 +52,7 @@ const CustomHeader = () => {
           mode='outlined'
           style={{ width: '90%', height: 40 }}
           contentStyle= {{ margin: 0 }}
+          placeholder='Restaurants, groceries, dishes'
           outlineStyle={{ borderWidth: 0, backgroundColor: theme.colors.surface }}
           // value={text}
           // onChangeText={text => setText(text)}
