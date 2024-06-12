@@ -11,7 +11,7 @@ export const unstable_settings = {
   initialRouteName: 'index',
 };
 
-const theme = {
+export const MyTheme = {
   ...DefaultTheme,
   // Specify custom property
   myOwnProperty: true,
@@ -25,7 +25,7 @@ export default function RootLayoutNav() {
 
   return (
     <GestureHandlerRootView>
-      <PaperProvider theme={theme}>
+      <PaperProvider theme={MyTheme}>
         <BottomSheetModalProvider>
           <Stack>
             <Stack.Screen
