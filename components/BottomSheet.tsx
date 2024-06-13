@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { forwardRef, useCallback, useMemo, useState } from 'react'
 import { BottomSheetBackdrop, BottomSheetModal, BottomSheetView, useBottomSheetModal } from '@gorhom/bottom-sheet'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Button, DefaultTheme, TextInput, useTheme } from 'react-native-paper';
+import { Button, TextInput, useTheme } from 'react-native-paper';
 import { MyTheme } from '@/app/_layout';
 
 type TDelivery = 'delivery' | 'pickup';
@@ -10,11 +10,11 @@ type TDelivery = 'delivery' | 'pickup';
 const BottomSheet = forwardRef<BottomSheetModal>((props, ref) => {
   const snapPoints = useMemo(() => ['40%'], []);
   const [value, setValue] = useState<TDelivery>('delivery')
-  console.log(value);
   const theme = useTheme();
   const styles = makeStyles(theme)
   const { dismiss } = useBottomSheetModal();
   const renderBackdrop = useCallback((props: any) => <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />, [])
+
   return (
     <BottomSheetModal
       ref={ref}

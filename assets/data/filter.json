@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Acai",
+        "count": 32,
+        "checked": false
+    },
+    {
+        "name": "African",
+        "count": 9,
+        "checked": false
+    },
+    {
+        "name": "Alcohol",
+        "count": 330,
+        "checked": false
+    },
+    {
+        "name": "American",
+        "count": 201,
+        "checked": false
+    },
+    {
+        "name": "BBQ",
+        "count": 128,
+        "checked": false
+    },
+    {
+        "name": "Breakfast",
+        "count": 219,
+        "checked": false
+    },
+    {
+        "name": "British",
+        "count": 432,
+        "checked": false
+    },
+    {
+        "name": "Indian",
+        "count": 90,
+        "checked": false
+    },
+    {
+        "name": "French",
+        "count": 893,
+        "checked": false
+    },
+    {
+        "name": "Nepali",
+        "count": 231,
+        "checked": false
+    }
+]

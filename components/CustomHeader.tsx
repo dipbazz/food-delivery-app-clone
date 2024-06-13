@@ -5,6 +5,7 @@ import { Appbar, Avatar, Text, TextInput, useTheme } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet from './BottomSheet';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { Link } from 'expo-router';
 
 
 const CustomHeader = () => {
@@ -57,9 +58,9 @@ const CustomHeader = () => {
           // value={text}
           // onChangeText={text => setText(text)}
         />
-        <TouchableOpacity>
+        <Link href="(modal)/filter">
           <Ionicons name='options-outline' size={20} />
-        </TouchableOpacity>
+        </Link>
       </View>
     </SafeAreaView>
   )

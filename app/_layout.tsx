@@ -18,11 +18,11 @@ export const MyTheme = {
   // Specify custom property in nested object
   colors: {
     ...DefaultTheme.colors,
+    lightGray: "#f1f1f0"
   },
 };
 
 export default function RootLayoutNav() {
-
   return (
     <GestureHandlerRootView>
       <PaperProvider theme={MyTheme}>
@@ -32,6 +32,17 @@ export default function RootLayoutNav() {
               name="index"
               options={{
                 header: () => <CustomHeader />
+              }}
+            />
+            <Stack.Screen
+              name="(modal)/filter"
+              options={{
+                presentation: 'modal',
+                headerTitle: 'Filter',
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: MyTheme.colors.background
+                }
               }}
             />
           </Stack>
