@@ -45,6 +45,17 @@ export default function RootLayoutNav() {
                 }
               }}
             />
+            <Stack.Screen
+              name="(modal)/location-search"
+              options={{
+                presentation: 'modal',
+                headerTitle: 'Location Search',
+                headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: MyTheme.colors.background
+                }
+              }}
+            />
           </Stack>
         </BottomSheetModalProvider>
       </PaperProvider>

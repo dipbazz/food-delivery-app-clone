@@ -13,7 +13,7 @@ interface ICategory {
   checked?: boolean;
 }
 
-const filter = () => {
+const Filter = () => {
   const theme = useTheme();
   const styles = makeStyles(theme);
   const navigation = useNavigation();
@@ -185,4 +185,4 @@ const makeStyles = ({colors}: typeof MyTheme) => StyleSheet.create({
   }
 })
 
-export default filter
+export default Filter

@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React, { forwardRef, useCallback, useMemo, useState } from 'react'
 import { BottomSheetBackdrop, BottomSheetModal, BottomSheetView, useBottomSheetModal } from '@gorhom/bottom-sheet'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Button, TextInput, useTheme } from 'react-native-paper';
+import { Button, Text, TextInput, useTheme } from 'react-native-paper';
 import { MyTheme } from '@/app/_layout';
+import { Ionicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 type TDelivery = 'delivery' | 'pickup';
 
@@ -23,6 +25,7 @@ const BottomSheet = forwardRef<BottomSheetModal>((props, ref) => {
       backdropComponent={renderBackdrop}
       backgroundStyle={{ borderRadius: 0}}
       handleIndicatorStyle={{ display: 'none'}}
+      style={{zIndex: 999 }}
       // onChange={handleSheetChanges}
     >
       <BottomSheetView style={{ padding: 10, paddingTop: 0, flex: 1 }}>
@@ -35,17 +38,37 @@ const BottomSheet = forwardRef<BottomSheetModal>((props, ref) => {
           </TouchableOpacity>
         </View>
         <View style={{marginBottom: 15}}>
-          <View style={{marginBottom: 10}}>
-            <TextInput
-              label="Current location"
-              mode='outlined'
-            />
+          <View>
+            <Text
+              variant='labelLarge'
+              style={styles.formLabel}
+            >
+              Your Location
+            </Text>
+            <Link href='/(modal)/location-search' asChild>
+              <TouchableOpacity style={{marginBottom: 10}}>
+                <View style={styles.formInput}>
+                  <Ionicons name='location-outline' size={16} color={theme.colors.surfaceVariant}/>
+                  <Text style={{flex: 1}}>Current Location</Text>
+                  <Ionicons name='chevron-forward' size={20} />
+                </View>
+              </TouchableOpacity>
+            </Link>
           </View>
           <View>
-            <TextInput
-              label="Arrival time"
-              mode='outlined'
-            />
+            <Text
+              variant='labelLarge'
+              style={styles.formLabel}
+            >
+              Arrival Time
+            </Text>
+            <TouchableOpacity style={{marginBottom: 10}}>
+              <View style={styles.formInput}>
+                <Ionicons name='stopwatch-outline' size={16} color={theme.colors.surfaceVariant}/>
+                <Text style={{flex: 1}}>Now</Text>
+                <Ionicons name='chevron-forward' size={20} />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
         <TouchableOpacity onPress={() => dismiss()}>
@@ -70,5 +93,17 @@ const makeStyles = ({ colors }: typeof MyTheme ) => StyleSheet.create({
   },
   inactiveChip: {
     backgroundColor: colors.background
+  },
+  formLabel: {
+    fontWeight: 'bold',
+    marginBottom: 5
+  },
+  formInput: {
+    flexDirection: 'row',
+    gap: 5,
+    alignItems: 'center',
+    borderWidth: 1,
+    padding: 10,
+    borderColor: colors.lightGray
   }
 })
